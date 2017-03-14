@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crystal Game</title>
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    
+    <!-- This links to the jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+
+    <!-- This links the styling CSS sheet -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <!-- This links the javascript -->
+	<script type="text/javascript" src="assets/javascript/game.js"></script>
+
+	<!-- This links the new font -->
+	<link href="https://fonts.googleapis.com/css?family=Lemonada|Righteous" rel="stylesheet">
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Welcome to Crystal collector...Now with extra kitties!</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 infoText">In this game you will click on the pictures below.  Each picture you click on will add to your current score.  Your goal is to get exactly the required score.  If you go over or under, then you will not win.  Be careful on what picture you click on.
+        <p>First, select the level of difficulty.  I reccomend starting on level 1 and working your way up. I will not tell you what/how a difficulty increases.  YOU will have to figure it out!  Good luck!!!</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 infoText">
+            WARNING: Levels 5 and up are very challenging, while Levels 7 and 8 are <strong><u>EXTREMELY DIFFICULT</u></strong>.  
+            Only for people with very good memories and sharp minds.
+        </div>
+        <div class="col-md-2">
+            
+        </div>
+        <div class="col-md-2">
+            
+        </div>
+    </div>
+</div>
+
+
+<!-- This selects the level of difficulty -->
+<div class="container">
+      <div class="row">
+            <div class="col-md-1">
+                <button class="difficulty btn btn-success" id="diffOne">Level 1</button>
+            </div>
+
+            <div class="col-md-1">
+                <button class="difficulty btn btn-success" id="diffTwo">Level 2</button>
+            </div>
+            
+            <div class="col-md-1">
+                <button class="difficulty btn btn-warning" id="diffThree">Level 3</button>
+            </div>
+
+            <div class="col-md-1">
+                <button class="difficulty btn btn-warning" id="diffFour">Level 4</button>
+            </div>
+
+
+            <div class="col-md-1">
+                <button class="difficulty btn btn-warning" id="diffFive">Level 5</button>
+            </div>
+
+            <div class="col-md-1">
+                <button class="difficulty btn btn-warning" id="diffSix">Level 6</button>
+            </div>
+
+
+
+
+
+
+
+            <div class="col-md-2">
+                <button class="difficulty btn btn-danger" id="diffSeven">Level 7</button>
+                <button class="btn btn-info" id="veryHardSeven">HINT</button>
+            </div>
+            
+            <div class="col-md-2">
+                <button class="difficulty btn btn-danger" id="diffEight">Level 8</button>
+                <button class="btn btn-info" id="veryHardEight">HINT</button>
+            </div>
+
+
+      </div>
+ </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 scoreKeeping">
+            <h2>Total Wins: <span id="wins"></span></h2>
+            <h2>Total Losses: <span id="losses"></span></h2>
+
+            <h2>Required score is: <span id="requiredScore"></span></h2>
+            <h2>Your current score is: <span id="currentScore"></span></h2>
+        </div>
+
+
+        <div class="col-md-2">
+                <img class="allRows firstRow" id="firstBox" src="assets/images/kitty1.gif" style="height:175px; width:175px;">
+                <h3 class="rand" id="randomValueA"></h3>
+        </div>
+
+        <div class="col-md-2">
+                <img class="allRows firstRow" id="secondBox" src="assets/images/kitty2.gif" style="height:175px; width:175px;">
+                <h3 class="rand" id="randomValueB"></h3>
+        </div>
+
+        <div class="col-md-2">
+                <img class="allRows firstRow" id="thirdBox" src="assets/images/kitty3.gif" style="height:175px; width:175px;">
+                <h3 class="rand" id="randomValueC"></h3>
+        </div>
+
+        <div class="col-md-2">
+                <img class="allRows firstRow" id="fourthBox" src="assets/images/kitty4.gif" style="height:175px; width:175px;">
+                <h3 class="rand" id="randomValueD"></h3>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+
+        <!-- FIX THIS BUTTON -->
+            <button class="btn btn-primary" id="gameOver" style="height:100px; width:300px;">
+            <span id="gameOverText"></span><br>
+            <span id="gameOverText2"></span></button> 
+
+        </div>
+        <div class="col-md-2">
+                <img class="allRows secondRow" id="fifthBox" src="assets/images/kitty5.gif" style="height:175px; width:175px;">
+                <h3 class="rand" id="randomValueE"></h3>
+        </div>
+
+        <div class="col-md-2">
+                <img class="allRows secondRow" id="sixthBox" src="assets/images/kitty6.gif" style="height:175px; width:175px;">
+                <h3 class="rand" id="randomValueF"></h3>
+        </div>
+
+        <div class="col-md-2">
+                <img class="allRows secondRow" id="seventhBox" src="assets/images/kitty7.gif" style="height:175px; width:175px;">
+                <h3 class="rand" id="randomValueG"></h3>
+        </div>
+
+        <div class="col-md-2">
+                <img class="allRows secondRow" id="eighthBox" src="assets/images/kitty8.gif" style="height:175px; width:175px;">
+                <h3 class="rand" id="randomValueH"></h3>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

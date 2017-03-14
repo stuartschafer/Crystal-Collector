@@ -1,0 +1,26 @@
+body { background-image: url("../images/background.jpg");
+	   background-size: cover;
+	   color: white;
+	   font-family: 'Lemonada', cursive; }
+
+.infoText { color: greenyellow; }
+
+.scoreKeeping { font-family: 'Righteous', cursive; }
+
+.veryHard { margin-bottom: 5px;
+			margin-left: 5px; }
+
+#requiredScore, #currentScore { color: magenta;
+								font-size: 40px; }
+
+.btn { margin-left: 5px; }
+
+h2 { font-size: 25px; }
+
+h3 { color: black;
+margin-left: 70px; }
+
+#wins, #losses { color: cyan; }
+
+#diffFive, #diffSix { background-color: purple;
+					 border-color: purple; }
