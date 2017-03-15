@@ -3,7 +3,7 @@ body { background-image: url("../images/background.jpg");
 	   color: white;
 	   font-family: 'Lemonada', cursive; }
 
-.infoText { color: greenyellow; }
+.infoText { color: springgreen; }
 
 .scoreKeeping { font-family: 'Righteous', cursive; }
 
@@ -15,12 +15,18 @@ body { background-image: url("../images/background.jpg");
 
 .btn { margin-left: 5px; }
 
-h2 { font-size: 25px; }
+h2 { color: cyan;
+	 font-size: 25px; }
 
 h3 { color: black;
 margin-left: 70px; }
+
+h4 { display: none;
+	 color: blue; }
 
 #wins, #losses { color: cyan; }
 
 #diffFive, #diffSix { background-color: purple;
 					 border-color: purple; }
+
+#extraHelp { color: red; }

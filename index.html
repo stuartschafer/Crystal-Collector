@@ -31,8 +31,11 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12 infoText">In this game you will click on the pictures below.  Each picture you click on will add to your current score.  Your goal is to get exactly the required score.  If you go over or under, then you will not win.  Be careful on what picture you click on.
-        <p>First, select the level of difficulty.  I reccomend starting on level 1 and working your way up. I will not tell you what/how a difficulty increases.  YOU will have to figure it out!  Good luck!!!</p>
+        <div class="col-md-12 infoText"><p>In this game you will click on the pictures below.  Each picture you click on will add to your current score.<br>
+        Your goal is to get exactly the required score.  If you go over or under, then you will not win.  Be careful on what picture you click on.</p>
+        <p>First, select the level of difficulty.  I recommend starting on level 1 and working your way up.<br>
+        I will not tell you what/how a difficulty increases.  YOU will have to figure it out!  Good luck!!!</p>
+        <p>Click on the EXTRA HELP button to help you figure out how many points you need to get.</p></span>
         </div>
     </div>
 </div>
@@ -41,7 +44,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 infoText">
-            WARNING: Levels 5 and up are very challenging, while Levels 7 and 8 are <strong><u>EXTREMELY DIFFICULT</u></strong>.  
+            WARNING: Levels 5 and 6 are very challenging, while Levels 7 and 8 are <strong><u>EXTREMELY DIFFICULT</u></strong>.  
             Only for people with very good memories and sharp minds.
         </div>
         <div class="col-md-2">
@@ -83,19 +86,24 @@
             </div>
 
 
-
-
-
-
-
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <button class="difficulty btn btn-danger" id="diffSeven">Level 7</button>
+            </div>
+            
+            <div class="col-md-1">
+                <button class="difficulty btn btn-danger" id="diffEight">Level 8</button>
+            </div>
+
+            <div class="col-md-1">
                 <button class="btn btn-info" id="veryHardSeven">HINT</button>
             </div>
             
-            <div class="col-md-2">
-                <button class="difficulty btn btn-danger" id="diffEight">Level 8</button>
+            <div class="col-md-1">
                 <button class="btn btn-info" id="veryHardEight">HINT</button>
+            </div>
+
+            <div class="col-md-2">
+                <button class="btn" id="extraHelp">EXTRA HELP</button>
             </div>
 
 
@@ -110,6 +118,7 @@
 
             <h2>Required score is: <span id="requiredScore"></span></h2>
             <h2>Your current score is: <span id="currentScore"></span></h2>
+            <h4>You need <span id = "remaining"></span> points to win.</h4>
         </div>
 
 

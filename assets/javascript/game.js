@@ -23,6 +23,8 @@ var changingPicSeven = 0;
 var changingPicEight = 0;
 var selected = 0;
 var attempt = 0;
+var remaining = 0;
+var begin = 0;
 
 picOne = (Math.floor((Math.random() * 12) + 1));
 picTwo = (Math.floor((Math.random() * 12) + 1));
@@ -40,6 +42,7 @@ requiredScore = (Math.floor((Math.random() * 100) + 20));
 
 
 $("#currentScore").text(currentScore);
+$("#remaining").text(remaining);
 
 
 
@@ -83,20 +86,28 @@ $("#eighthBox").click(function() {
 	checkScore();
 });
 
+$("#extraHelp").click(function() {
+	$("h4").fadeIn("slow");
+	remaining = requiredScore - currentScore;
+	if (begin === 1) { $("#remaining").text(remaining); }
+});
+
 // This checks the scores and applies level difficulty if needed.
 function checkScore() { 
-	$("#currentScore").text(currentScore); 
+	$("#currentScore").text(currentScore);
+	remaining = requiredScore - currentScore;
+	$("#remaining").text(remaining); 
 	
 	if (currentScore > requiredScore) {
 		attempt = 5;
 		$(".allRows").hide();
 		$(".rand").hide();
-		$(".btn").hide();
 		losses++;
 		$("#losses").text(losses);
 		$("#gameOverText").text("Too bad, but you lose.");
 		$("#gameOverText2").text("Click me to play again.");
-		$("#gameOver").show(); }
+		$("#gameOver").show();
+		$("h4").hide(); }
 
 	if (currentScore === requiredScore) {
 		$(".allRows").hide();
@@ -106,7 +117,8 @@ function checkScore() {
 		$("#wins").text(wins);
 		$("#gameOverText").text("Congradulations...You WIN!!!!");
 		$("#gameOverText2").text("Click me to play again.");
-		$("#gameOver").show(); }
+		$("#gameOver").show();
+		$("h4").hide(); }
 		
 
 $("#gameOver").click(function() {
@@ -217,20 +229,23 @@ $("#gameOver").click(function() {
 // This resets the game.
 function resetGame() {
 currentScore = 0;
+remaining = 0;
 $("#requiredScore").text(0);
 picOne = (Math.floor((Math.random() * 12) + 1));
 picTwo = (Math.floor((Math.random() * 12) + 1));
 picThree = (Math.floor((Math.random() * 12) + 1));
 picFour = (Math.floor((Math.random() * 12) + 1));
-
+difficulty = 0;
+begin = 0;
 requiredScore = (Math.floor((Math.random() * 100) + 20));
 
 $(".allRows").fadeOut("slow");
 $(".difficulty").fadeIn("slow");
-
+$("#remaining").text(remaining);
 $("#currentScore").text(currentScore);
 $(".btn-info").hide();
 $("#gameOver").hide();
+$("h4").hide();
 
 }
 
@@ -241,7 +256,9 @@ $("#diffOne").click(function() {
 	$(".difficulty").hide();
 	$(this).show();
 	$("#requiredScore").text(requiredScore);
+	$("#remaining").text(remaining);
 	$(".firstRow").fadeIn("slow");
+	begin = 1;
 });
 
 
@@ -250,7 +267,9 @@ $("#diffTwo").click(function() {
 	$(".difficulty").hide();
 	$(this).show();
 	$("#requiredScore").text(requiredScore);
+	$("#remaining").text(remaining);
 	$(".allRows").fadeIn("slow");
+	begin = 1;
 });
 
 
@@ -259,7 +278,9 @@ $("#diffThree").click(function() {
 	$(".difficulty").hide();
 	$(this).show();
 	$("#requiredScore").text(requiredScore);
+	$("#remaining").text(remaining);
 	difficulty = 3;
+	begin = 1;
 
 	$(".firstRow").fadeIn("slow");
 	$(".rand").fadeIn("slow");
@@ -281,7 +302,9 @@ $("#diffFour").click(function() {
 	$(".difficulty").hide();
 	$(this).show();
 	$("#requiredScore").text(requiredScore);
+	$("#remaining").text(remaining);
 	difficulty = 4;
+	begin = 1;
 
 	$(".allRows").fadeIn("slow");
 	$(".rand").fadeIn("slow");
@@ -310,8 +333,10 @@ $("#diffFive").click(function() {
 	$(".difficulty").hide();
 	difficulty = 5;
 	attempt = 0;
+	begin = 1;
 	$(this).show();
 	$("#requiredScore").text(requiredScore);
+	$("#remaining").text(remaining);
 	$(".firstRow").fadeIn("slow");
 });
 
@@ -320,8 +345,10 @@ $("#diffSix").click(function() {
 	$(".difficulty").hide();
 	difficulty = 6;
 	attempt = 0;
+	begin = 1;
 	$(this).show();
 	$("#requiredScore").text(requiredScore);
+	$("#remaining").text(remaining);
 	$(".allRows").fadeIn("slow");
 });
 
@@ -331,7 +358,9 @@ $("#diffSeven").click(function() {
 	$("#veryHardSeven").fadeIn("slow");
 	$(this).show();
 	$("#requiredScore").text(requiredScore);
+	$("#remaining").text(remaining);
 	difficulty = 7;
+	begin = 1;
 	$(".firstRow").fadeIn("slow");
 });
 
@@ -341,7 +370,9 @@ $("#diffEight").click(function() {
 	$(this).show();
 	$("#veryHardEight").fadeIn("slow");
 	difficulty = 8;
+	begin = 1;
 	$("#requiredScore").text(requiredScore);
+	$("#remaining").text(remaining);
 	$(".allRows").fadeIn("slow");
 });
 
