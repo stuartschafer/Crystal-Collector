@@ -1,32 +1,57 @@
-body { background-image: url("../images/background.jpg");
-	   background-size: cover;
-	   color: white;
-	   font-family: 'Lemonada', cursive; }
+body {
+	background-image: url("../images/background.jpg");
+	background-size: cover;
+	color: white;
+	font-family: 'Lemonada', cursive;
+}
 
-.infoText { color: springgreen; }
+.infoText {
+	color: springgreen;
+}
 
-.scoreKeeping { font-family: 'Righteous', cursive; }
+.scoreKeeping {
+	font-family: 'Righteous', cursive;
+}
 
-.veryHard { margin-bottom: 5px;
-			margin-left: 5px; }
+.veryHard {
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
 
-#requiredScore, #currentScore { color: magenta;
-								font-size: 40px; }
+#requiredScore, #currentScore {
+	color: magenta;
+	font-size: 40px;
+}
 
-.btn { margin-left: 5px; }
+.btn { 
+	margin-left: 5px;
+	padding: 5px;
+}
 
-h2 { color: cyan;
-	 font-size: 25px; }
+h2 {
+	color: cyan;
+	font-size: 25px;
+}
 
-h3 { color: black;
-margin-left: 70px; }
+h3 {
+	color: black;
+	margin-left: 70px;
+}
 
-h4 { display: none;
-	 color: blue; }
+h4 {
+	display: none;
+	color: blue;
+}
 
-#wins, #losses { color: cyan; }
+#wins, #losses {
+	color: cyan;
+}
 
-#diffFive, #diffSix { background-color: purple;
-					 border-color: purple; }
+#diffFive, #diffSix {
+	background-color: purple;
+	border-color: purple;
+}
 
-#extraHelp { color: red; }
+#extraHelp {
+	color: red;
+}
