@@ -9,6 +9,6 @@ You can also click on the extra help button if you need it.
 Good Luck!!!
 
 To play:
-https://stuartschafer.github.io/GIPHY-API/
+ https://stuartschafer.github.io/CrystalCat-Collector/
 
 ![](assets/images/crystal.gif)
