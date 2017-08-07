@@ -1,4 +1,4 @@
-# Crystal Game
+# CrystalCat Collector
 
 Select a level.  Then click on pictures.  Each picture is worth a certain amount of points.  Your goal is to hit the target goal exactly. (Can't go over)
 
@@ -11,4 +11,4 @@ Good Luck!!!
 To play:
 https://stuartschafer.github.io/GIPHY-API/
 
-![](assets/images/crystal2.gif)
+![](assets/images/crystal.gif)
