@@ -11,4 +11,4 @@ Good Luck!!!
 To play:
 https://stuartschafer.github.io/GIPHY-API/
 
-![](assets/crystal2.gif)
+![](assets/images/crystal2.gif)
