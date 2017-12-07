@@ -4,92 +4,66 @@ $(".allRows").hide();
 $(".btn-info").hide();
 $("#gameOver").hide();
 
-var wins = 0;
-var losses = 0;
-var currentScore = 0;
-var requiredScore = 0;
-var	candyOne = 0;
-var	candyTwo = 0;
-var	candyThree = 0;
-var candyFour = 0;
-var difficulty = 0;
-var changingPicOne = 0;
-var changingPicTwo = 0;
-var changingPicThree = 0;
-var changingPicFour = 0;
-var changingPicFive = 0;
-var changingPicSix = 0;
-var changingPicSeven = 0;
-var changingPicEight = 0;
-var selected = 0;
-var attempt = 0;
-var remaining = 0;
-var begin = 0;
+let ummm = 0;
 
-picOne = (Math.floor((Math.random() * 12) + 1));
-picTwo = (Math.floor((Math.random() * 12) + 1));
-picThree = (Math.floor((Math.random() * 12) + 1));
-picFour = (Math.floor((Math.random() * 12) + 1));
-picFive = (Math.floor((Math.random() * 12) + 1));
-picSix = (Math.floor((Math.random() * 12) + 1));
-picSeven = (Math.floor((Math.random() * 12) + 1));
-picEight = (Math.floor((Math.random() * 12) + 1));
+let wins = 0;
+let losses = 0;
+let currentScore = 0;
+let requiredScore = 0;
+let difficulty = 0;
+let changingPicOne = 0;
+let changingPicTwo = 0;
+let changingPicThree = 0;
+let changingPicFour = 0;
+let changingPicFive = 0;
+let changingPicSix = 0;
+let changingPicSeven = 0;
+let changingPicEight = 0;
+let attempt = 0;
+let remaining = 0;
+let begin = 0;
+let picValues = [];
 
-requiredScore = (Math.floor((Math.random() * 100) + 20));
+// This assigns random values to 8 different pictures
+for (let i = 0; i < 8; i++) {
+	let pic = (Math.floor((Math.random() * 12) + 2));
+	picValues.push(pic);
+}
 
+console.log(picValues);
 
+getRequiredScore();
 
-
+function getRequiredScore() {
+	requiredScore = (Math.floor((Math.random() * 100) + 60));
+	(requiredScore > 120) ? getRequiredScore() : "";
+};
 
 $("#currentScore").text(currentScore);
 $("#remaining").text(remaining);
 
+$(".allRows").click(function() {
+	let boxClicked = $(this).attr("id");
 
+	// This adds the value of the box to the score
+	currentScore = (boxClicked === "firstBox") ? currentScore + picValues[0] :
+		(boxClicked === "secondBox") ? currentScore + picValues[1] :
+		(boxClicked === "thirdBox") ? currentScore + picValues[2] :
+		(boxClicked === "fourthBox") ? currentScore + picValues[3] :
+		(boxClicked === "fifthBox") ? currentScore + picValues[4] :
+		(boxClicked === "sixthBox") ? currentScore + picValues[5] :
+		(boxClicked === "seventhBox") ? currentScore + picValues[6] : currentScore + picValues[7];
 
-$("#firstBox").click(function() {
-	currentScore = currentScore + picOne;
-	checkScore();
-});
-
-$("#secondBox").click(function() {
-	currentScore = currentScore + picTwo;
-	checkScore();
-});
-
-$("#thirdBox").click(function() {
-	currentScore = currentScore + picThree;
-	checkScore();
-});
-
-$("#fourthBox").click(function() {
-	currentScore = currentScore + picFour;
-	checkScore();
-});
-
-$("#fifthBox").click(function() {
-	currentScore = currentScore + picFive;
-	checkScore();
-});
-
-$("#sixthBox").click(function() {
-	currentScore = currentScore + picSix;
-	checkScore();
-});
-
-$("#seventhBox").click(function() {
-	currentScore = currentScore + picSeven;
-	checkScore();
-});
-
-$("#eighthBox").click(function() {
-	currentScore = currentScore + picEight;
 	checkScore();
 });
 
 $("#extraHelp").click(function() {
 	$("h4").fadeIn("slow");
 	remaining = requiredScore - currentScore;
-	if (begin === 1) { $("#remaining").text(remaining); }
+
+	// This only shows if the game has started
+	(begin === 1) ? $("#remaining").text(remaining) : "";
+
 });
 
 // This checks the scores and applies level difficulty if needed.
@@ -104,10 +78,10 @@ function checkScore() {
 		$(".rand").hide();
 		losses++;
 		$("#losses").text(losses);
-		$("#gameOverText").text("Too bad, but you lose.");
-		$("#gameOverText2").text("Click me to play again.");
+		$("#gameOverText").html("Too bad, but you lose. <br /> Click me to play again.");
 		$("#gameOver").show();
-		$("h4").hide(); }
+		$("h4").hide();
+	}
 
 	if (currentScore === requiredScore) {
 		$(".allRows").hide();
@@ -115,138 +89,131 @@ function checkScore() {
 		$(".rand").hide();
 		wins++;
 		$("#wins").text(wins);
-		$("#gameOverText").text("Congradulations...You WIN!!!!");
-		$("#gameOverText2").text("Click me to play again.");
+		$("#gameOverText").html("Congradulations...You WIN!!!! <br /> Click me to play again");
 		$("#gameOver").show();
-		$("h4").hide(); }
+		$("h4").hide();
+	}
 		
 
 $("#gameOver").click(function() {
 	resetGame();
-	
 });
 
+	// This shows a randon value below each picture.  It has nothing to do with the actual value
+	if (difficulty === 3 || difficulty === 4) {
+		let randomValues = [];
+		for (let i = 0; i < 8; i++) {
+			let random = (Math.floor((Math.random() * 12) + 1));
+			randomValues.push(random);
+		}
 
+		$("#randomValueA").text(randomValues[0]);
+		$("#randomValueB").text(randomValues[1]);
+		$("#randomValueC").text(randomValues[2]);
+		$("#randomValueD").text(randomValues[3]);
 
-	
-	if (difficulty === 3) { randomOne = (Math.floor((Math.random() * 12) + 1));
-							randomTwo = (Math.floor((Math.random() * 12) + 1));
-							randomThree = (Math.floor((Math.random() * 12) + 1));
-							randomFour = (Math.floor((Math.random() * 12) + 1));
-							$("#randomValueA").text(randomOne);
-							$("#randomValueB").text(randomTwo);
-							$("#randomValueC").text(randomThree);
-							$("#randomValueD").text(randomFour); }
-	
-	if (difficulty === 4) { randomOne = (Math.floor((Math.random() * 12) + 1));
-								 randomTwo = (Math.floor((Math.random() * 12) + 1));
-								 randomThree = (Math.floor((Math.random() * 12) + 1));
-								 randomFour = (Math.floor((Math.random() * 12) + 1));
-								 randomFive = (Math.floor((Math.random() * 12) + 1));
-								 randomSix = (Math.floor((Math.random() * 12) + 1));
-								 randomSeven = (Math.floor((Math.random() * 12) + 1));
-								 randomEight = (Math.floor((Math.random() * 12) + 1));
-								 $("#randomValueA").text(randomOne);
-								 $("#randomValueB").text(randomTwo);
-								 $("#randomValueC").text(randomThree);
-								 $("#randomValueD").text(randomFour);
-								 $("#randomValueE").text(randomFive);
-								 $("#randomValueF").text(randomSix);
-								 $("#randomValueG").text(randomSeven);
-								 $("#randomValueH").text(randomEight); }
+		if (difficulty === 4) {
+			$("#randomValueE").text(randomValues[4]);
+			$("#randomValueF").text(randomValues[5]);
+			$("#randomValueG").text(randomValues[6]);
+			$("#randomValueH").text(randomValues[7]);
+		}
+	}
 
 	if (difficulty === 5) { 
-		if (attempt === 0) { $("#firstBox").show();
-							 $("#secondBox").hide();
-						 	 $("#thirdBox").show();
-						 	 $("#fourthBox").hide();
-						 	 attempt = 1; }
-		else if (attempt === 1) { $("#firstBox").hide();
-			   $("#secondBox").show();
-			   $("#thirdBox").hide();
-			   $("#fourthBox").show();
-			   attempt = 0; }
-		else { $(".allRows").hide(); }
+		if (attempt === 0) { 
+			$("#firstBox").show();
+			$("#secondBox").hide();
+			$("#thirdBox").show();
+			$("#fourthBox").hide();
+			attempt = 1;
+		}
+		else if (attempt === 1) {
+			$("#firstBox").hide();
+			$("#secondBox").show();
+			$("#thirdBox").hide();
+			$("#fourthBox").show();
+			attempt = 0;
+		}
+		else {
+			$(".allRows").hide();
+		}
 	}
 
 	if (difficulty === 6) { 
-		if (attempt === 0) { $("#firstBox").show();
-							 $("#secondBox").hide();
-						 	 $("#thirdBox").hide();
-						 	 $("#fourthBox").show();
-						 	 $("#fifthBox").hide();
-							 $("#sixthBox").show();
-						 	 $("#seventhBox").show();
-						 	 $("#eighthBox").hide();
-						 	 attempt = 1; }
-		else if (attempt === 1) { $("#firstBox").hide();
-							 	  $("#secondBox").show();
-						 	 	  $("#thirdBox").show();
-						 	 	  $("#fourthBox").hide();
-						 	 	  $("#fifthBox").show();
-							 	  $("#sixthBox").hide();
-						 	 	  $("#seventhBox").hide();
-						 	 	  $("#eighthBox").show();
-			   attempt = 0; }
-		else { $(".allRows").hide(); }
+		if (attempt === 0) {
+			$("#firstBox").show();
+			$("#secondBox").hide();
+			$("#thirdBox").hide();
+			$("#fourthBox").show();
+			$("#fifthBox").hide();
+			$("#sixthBox").show();
+			$("#seventhBox").show();
+			$("#eighthBox").hide();
+			attempt = 1;
+		}
+		else if (attempt === 1) {
+			$("#firstBox").hide();
+			$("#secondBox").show();
+			$("#thirdBox").show();
+			$("#fourthBox").hide();
+			$("#fifthBox").show();
+			$("#sixthBox").hide();
+			$("#seventhBox").hide();
+			$("#eighthBox").show();
+			attempt = 0;
+		}
+		else {
+			$(".allRows").hide();
+		}
 	}
 
+	if (difficulty === 7 || difficulty === 8) {
+		changingPicOne = picValues[0];
+		changingPicTwo = picValues[1];
+		changingPicThree = picValues[2];
+		changingPicFour = picValues[3];
+		changingPicFive = picValues[4];
+		changingPicSix = picValues[5];
+		changingPicSeven = picValues[6];
+		changingPicEight = picValues[7];
 
-
-
-	if (difficulty === 7) { changingPicOne = picOne;
-							changingPicTwo = picTwo;
-							changingPicThree = picThree;
-							changingPicFour = picFour;
-
-							picOne = changingPicFour;
-							picTwo = changingPicOne;
-							picThree = changingPicTwo;
-							picFour = changingPicThree;
- }
-
-	if (difficulty === 8) { changingPicOne = picOne;
-						    changingPicTwo = picTwo;
-							changingPicThree = picThree;
-							changingPicFour = picFour;
-							changingPicFive = picFive;
-							changingPicSix = picSix;
-							changingPicSeven = picSeven;
-							changingPicEight = picEight;
-
-							picOne = changingPicTwo;
-							picTwo = changingPicThree;
-							picThree = changingPicFour;
-							picFour = changingPicFive;
-							picFive = changingPicSix;
-							picSix = changingPicSeven;
-							picSeven = changingPicEight;
-							picEight = changingPicOne; }
-
+		picValues[0] = changingPicTwo;
+		picValues[1] = changingPicThree;
+		picValues[2] = changingPicFour;
+		picValues[3] = changingPicFive;
+		picValues[4] = changingPicSix;
+		picValues[5] = changingPicSeven;
+		picValues[6] = changingPicEight;
+		picValues[7] = changingPicOne;
+ 	}
 }
 
 
 // This resets the game.
 function resetGame() {
-currentScore = 0;
-remaining = 0;
-$("#requiredScore").text(0);
-picOne = (Math.floor((Math.random() * 12) + 1));
-picTwo = (Math.floor((Math.random() * 12) + 1));
-picThree = (Math.floor((Math.random() * 12) + 1));
-picFour = (Math.floor((Math.random() * 12) + 1));
-difficulty = 0;
-begin = 0;
-requiredScore = (Math.floor((Math.random() * 100) + 20));
+	getRequiredScore();
+	currentScore = 0;
+	remaining = 0;
+	$("#requiredScore").text("");
+	picValues = [];
+	for (let i = 0; i < 8; i++) {
+		let pic = (Math.floor((Math.random() * 12) + 2));
+		picValues.push(pic);
+	}
+	ummm++;
+	console.log(ummm);
+	// console.log(picValues);
+	difficulty = 0;
+	begin = 0;
 
-$(".allRows").fadeOut("slow");
-$(".difficulty").fadeIn("slow");
-$("#remaining").text(remaining);
-$("#currentScore").text(currentScore);
-$(".btn-info").hide();
-$("#gameOver").hide();
-$("h4").hide();
-
+	$(".allRows").fadeOut("slow");
+	$(".difficulty").fadeIn("slow");
+	$("#remaining").text(remaining);
+	$("#currentScore").text(currentScore);
+	$(".btn-info").hide();
+	$("#gameOver").hide();
+	$("h4").hide();
 }
 
 // This section is for the levels of difficulty.
@@ -285,15 +252,17 @@ $("#diffThree").click(function() {
 	$(".firstRow").fadeIn("slow");
 	$(".rand").fadeIn("slow");
 
-	randomOne = (Math.floor((Math.random() * 12) + 1));
-	randomTwo = (Math.floor((Math.random() * 12) + 1));
-	randomThree = (Math.floor((Math.random() * 12) + 1));
-	randomFour = (Math.floor((Math.random() * 12) + 1));
+	let randomValues = [];
+		for (let i = 0; i < 4; i++) {
+			let random = (Math.floor((Math.random() * 12) + 1));
+			randomValues.push(random);
+		}
 
-	$("#randomValueA").text(randomOne);
-	$("#randomValueB").text(randomTwo);
-	$("#randomValueC").text(randomThree);
-	$("#randomValueD").text(randomFour);
+		$("#randomValueA").text(randomValues[0]);
+		$("#randomValueB").text(randomValues[1]);
+		$("#randomValueC").text(randomValues[2]);
+		$("#randomValueD").text(randomValues[3]);
+
 });
 
 
@@ -309,23 +278,21 @@ $("#diffFour").click(function() {
 	$(".allRows").fadeIn("slow");
 	$(".rand").fadeIn("slow");
 
-	randomOne = (Math.floor((Math.random() * 12) + 1));
-	randomTwo = (Math.floor((Math.random() * 12) + 1));
-	randomThree = (Math.floor((Math.random() * 12) + 1));
-	randomFour = (Math.floor((Math.random() * 12) + 1));
-	randomFive = (Math.floor((Math.random() * 12) + 1));
-	randomSix = (Math.floor((Math.random() * 12) + 1));
-	randomSeven = (Math.floor((Math.random() * 12) + 1));
-	randomEight = (Math.floor((Math.random() * 12) + 1));
-	
-	$("#randomValueA").text(picOne);
-	$("#randomValueB").text(picTwo);
-	$("#randomValueC").text(picThree);
-	$("#randomValueD").text(picFour);
-	$("#randomValueE").text(picFive);
-	$("#randomValueF").text(picSix);
-	$("#randomValueG").text(picSeven);
-	$("#randomValueH").text(picEight);
+	let randomValues = [];
+	for (let i = 0; i < 8; i++) {
+		let random = (Math.floor((Math.random() * 12) + 1));
+		randomValues.push(random);
+	}
+
+	$("#randomValueA").text(randomValues[0]);
+	$("#randomValueB").text(randomValues[1]);
+	$("#randomValueC").text(randomValues[2]);
+	$("#randomValueD").text(randomValues[3]);
+	$("#randomValueE").text(randomValues[4]);
+	$("#randomValueF").text(randomValues[5]);
+	$("#randomValueG").text(randomValues[6]);
+	$("#randomValueH").text(randomValues[7]);
+
 });
 
 // LEVEL 5
@@ -378,21 +345,21 @@ $("#diffEight").click(function() {
 
 // Hint button for level 7
 $("#veryHardSeven").click(function() {
-alert("All 4 values stay the same for the entire game, However, they move from button to button. Pay attention to the pattern.  For the answer, just do what you would do to comfort a coding bug.  :)");
-console.log("For dificulty 7, each value moves from LEFT to RIGHT."); 
-console.log("When you click, the value on picture 2 becomes the value on picture 3.");
-console.log("The value on picture 4 becomes the value on picture 1.");
-console.log("You know how it works now, but it's still VERY HARD.")
+	alert("All 4 values stay the same for the entire game, However, they move from button to button. Pay attention to the pattern.  For the answer, just do what you would do to comfort a coding bug.  :)");
+	console.log("For dificulty 7, each value moves from LEFT to RIGHT."); 
+	console.log("When you click, the value on picture 2 becomes the value on picture 3.");
+	console.log("The value on picture 4 becomes the value on picture 1.");
+	console.log("You know how it works now, but it's still VERY HARD.")
 });
 
 // Hint button for level 8
 $("#veryHardEight").click(function() {
-alert("All 8 values stay the same for the entire game, However, they move from button to button. Pay attention to the pattern.  For the answer, just do what you would do to comfort a coding bug.  :)");
-console.log("For dificulty 8, each value moves from RIGHT to LEFT."); 
-console.log("When you click, the value on picture 2 becomes the value on picture 1.");
-console.log("The value on picture 1 becomes the value on picture 8.");
-console.log("Picture counts are top row 1,2,3,4.  Bottom row 5,6,7,8.");
-console.log("You know how it works now, but it's still VERY HARD.");
+	alert("All 8 values stay the same for the entire game, However, they move from button to button. Pay attention to the pattern.  For the answer, just do what you would do to comfort a coding bug.  :)");
+	console.log("For dificulty 8, each value moves from RIGHT to LEFT."); 
+	console.log("When you click, the value on picture 2 becomes the value on picture 1.");
+	console.log("The value on picture 1 becomes the value on picture 8.");
+	console.log("Picture counts are top row 1,2,3,4.  Bottom row 5,6,7,8.");
+	console.log("You know how it works now, but it's still VERY HARD.");
 });
 
 
